@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ public class Growing : MonoBehaviour
     public SpriteRenderer spriteMedium;
     public SpriteRenderer spriteLarge;
     private ParticleSystem[] confetti;
+    public float time;
+    private bool readyToHarvest;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +27,19 @@ public class Growing : MonoBehaviour
         {
             confetti[i].Pause();
         }
-        Application.targetFrameRate=60;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float time = Time.frameCount;
-        if (fullyGrownLimit==time)
+        time += Time.deltaTime;
+        if (mediumGrownLimit < time && fullyGrownLimit > time)
+        {
+            spriteSmall.enabled = false;
+            spriteMedium.enabled = true;
+            spriteLarge.enabled = false;
+        }
+        else if(fullyGrownLimit < time && mediumGrownLimit < time)
         {
             spriteSmall.enabled = false;
             spriteMedium.enabled = false;
@@ -40,11 +48,12 @@ public class Growing : MonoBehaviour
             {
                 confetti[i].Play();
             }
-        }
-        else if(mediumGrownLimit==time){ 
-            spriteSmall.enabled = false;
-            spriteMedium.enabled = true;
-            spriteLarge.enabled = false;
+            for (int i = 0; i < confetti.Length; i++)
+            {
+                if (!confetti[i].isStopped) { 
+                confetti[i].gameObject.SetActive(false);
+                }
+            }
         }
     }
 }
