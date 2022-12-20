@@ -65,17 +65,6 @@ public class Growing : MonoBehaviour
             harvestInteract.enabled = true;
             StartCoroutine(confettiPlayer());
         }
-        if (harvestInteract.enabled == true)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mousePosition = Input.mousePosition;
-                Camera.main.ScreenToWorldPoint(mousePosition);
-                Debug.DrawRay(transform.position, mousePosition - transform.position, Color.blue);
-                //spriteLarge.enabled = false;
-
-            }
-        }
     }
     
 }
