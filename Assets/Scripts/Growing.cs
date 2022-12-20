@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Growing : MonoBehaviour
@@ -13,47 +14,69 @@ public class Growing : MonoBehaviour
     public SpriteRenderer spriteMedium;
     public SpriteRenderer spriteLarge;
     private ParticleSystem[] confetti;
-    public float time;
-    private bool readyToHarvest;
+    public float timeRaw;
+    public int time;
+    private BoxCollider2D harvestInteract;
 
+    IEnumerator confettiPlayer()
+    {
+        for (int i = 0; i < confetti.Length; i++)
+        {
+            confetti[i].Play();
+        }
+        yield return new WaitForSeconds(2);
+        for (int i = 0; i < confetti.Length; i++)
+        {
+            confetti[i].gameObject.SetActive(false);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
         spriteSmall.enabled = true;
         spriteMedium.enabled = false;
         spriteLarge.enabled = false;
+        harvestInteract = GetComponent<BoxCollider2D>();
         confetti = GetComponentsInChildren<ParticleSystem>();
         for(int i = 0; i < confetti.Length; i++)
         {
             confetti[i].Pause();
         }
+        harvestInteract.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if (mediumGrownLimit < time && fullyGrownLimit > time)
+        
+        timeRaw += Time.deltaTime;
+        time = (int) timeRaw;
+        if (mediumGrownLimit == time)
         {
             spriteSmall.enabled = false;
             spriteMedium.enabled = true;
             spriteLarge.enabled = false;
         }
-        else if(fullyGrownLimit < time && mediumGrownLimit < time)
+        else if (fullyGrownLimit == time)
         {
             spriteSmall.enabled = false;
             spriteMedium.enabled = false;
             spriteLarge.enabled = true;
-            for (int i = 0; i < confetti.Length; i++)
+            harvestInteract.enabled = true;
+            StartCoroutine(confettiPlayer());
+        }
+        if (harvestInteract.enabled == true)
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                confetti[i].Play();
-            }
-            for (int i = 0; i < confetti.Length; i++)
-            {
-                if (!confetti[i].isStopped) { 
-                confetti[i].gameObject.SetActive(false);
-                }
+                Vector3 mousePosition = Input.mousePosition;
+                Camera.main.ScreenToWorldPoint(mousePosition);
+                Debug.DrawRay(transform.position, mousePosition - transform.position, Color.blue);
+                //spriteLarge.enabled = false;
+
             }
         }
     }
+    
 }
+
