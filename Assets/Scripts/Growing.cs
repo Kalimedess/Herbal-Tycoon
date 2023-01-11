@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Growing : MonoBehaviour
@@ -16,7 +17,7 @@ public class Growing : MonoBehaviour
     private ParticleSystem[] confetti;
     public float timeRaw;
     public int time;
-    private BoxCollider2D harvestInteract;
+    
 
     IEnumerator confettiPlayer()
     {
@@ -36,15 +37,12 @@ public class Growing : MonoBehaviour
         spriteSmall.enabled = true;
         spriteMedium.enabled = false;
         spriteLarge.enabled = false;
-        harvestInteract = GetComponent<BoxCollider2D>();
         confetti = GetComponentsInChildren<ParticleSystem>();
         for(int i = 0; i < confetti.Length; i++)
         {
             confetti[i].Pause();
         }
-        harvestInteract.enabled = false;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -62,7 +60,7 @@ public class Growing : MonoBehaviour
             spriteSmall.enabled = false;
             spriteMedium.enabled = false;
             spriteLarge.enabled = true;
-            harvestInteract.enabled = true;
+            
             StartCoroutine(confettiPlayer());
         }
     }
