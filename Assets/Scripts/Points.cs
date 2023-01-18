@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Points : MonoBehaviour
 {
-    public float points;
+    public ulong points = 0;
     private TextMeshProUGUI text;
     private string showUI;
     // Start is called before the first frame update

@@ -5,34 +5,32 @@ using UnityEngine;
 public class BuyingPots : MonoBehaviour
 {
     private Points checkPoints;
-    private NoMoney nomon;
+    public NoMoney nomon;
     public GameObject pot;
     private void Start()
     {
         checkPoints = GetComponent<Points>();
-        pot = GetComponent<GameObject>();
-        nomon = GetComponent<NoMoney>();
+        
     }
-    public void buy()
+    public void buy(int requiredPoints)
     {
-        switch (checkPoints.points) {
-            case 100f:
-                checkPoints.points -= 100f;
+        switch (requiredPoints) {
+            case 100:
                 Instantiate(pot, new Vector2(-4.723616f, 0.9894762f), Quaternion.identity);
-                Destroy(gameObject);
+                checkPoints.points -= 100;
             break;
-            case 300f:
-                checkPoints.points -= 300f;
+            case 300:
+                checkPoints.points -= 300;
                 Instantiate(pot, new Vector2(-3.251468f, 0.9894762f), Quaternion.identity);
                 Destroy(gameObject);
                 break;
-            case 1000f:
-                checkPoints.points -= 1000f;
+            case 1000:
+                checkPoints.points -= 1000;
                 Instantiate(pot, new Vector2(-4.723616f, 3.42023f), Quaternion.identity);
                 Destroy(gameObject);
                 break;
-            case 3000f:
-                checkPoints.points -= 3000f;
+            case 3000:
+                checkPoints.points -= 3000;
                 Instantiate(pot, new Vector2(-3.251468f, 3.42023f), Quaternion.identity);
                 Destroy(gameObject);
                 break;
