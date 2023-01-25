@@ -5,14 +5,14 @@ using UnityEngine;
 public class ShopUI : MonoBehaviour
 {
     [SerializeField] private RectTransform shop;
-    [SerializeField] private RectTransform content;
+    [SerializeField] private RectTransform shopcontent;
     [Header("Workers")]
-    [SerializeField] private ShopWorkerUI shopWorkerUI;
+    [SerializeField] private ShopItemUI shopitemUI;
 
-    public void AddWorker(Worker worker)
+    public void AddShopItem(Worker worker)
     {
-        var newWorker = Instantiate(shopWorkerUI, content);
-        newWorker.UpdateUI(worker);
+        var newItem = Instantiate(shopitemUI, content);
+        newItem.UpdateUI(worker);
     }
 
     public void OpenShop()
