@@ -5,21 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Harvesting : MonoBehaviour
 {
-    public SpriteRenderer[] sprite;
-    private Points pont;
+    private ShowPlant plantState;
+    private SpriteRenderer currentSprite;
+
+
 
     private void Start()
     {
-        pont = GetComponent<Points>();
-        sprite = GetComponentsInChildren<SpriteRenderer>();
+        currentSprite = GetComponent<SpriteRenderer>();
+        plantState = GetComponent<ShowPlant>();
     }
     private void OnMouseDown()
     {
-        int last = sprite.Length - 1;
-        if (sprite[last].enabled)
+        if (plantState.readyToHarvest)
         {
-            pont.points += 100;
-            Destroy(gameObject);
+            currentSprite.sprite = null;
+            plantState.readyToHarvest = false;
         }
     }
 }
