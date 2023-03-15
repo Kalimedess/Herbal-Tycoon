@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98aed015c37d9f948aeb01fc61b3f1d9, type: 3}
   m_Name: Aloe
   m_EditorClassIdentifier: 
-  plantName: 
-  sellPrice: 0
-  buyPrice: 0
-  growStage: 0
-  growTime: 0
+  plantName: Aloe
+  sellPrice: 100
+  buyPrice: 50
+  growTime: 20
+  dieTime: 25
   sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: d977f0070d2131b4891427349c21df58, type: 3}
+  - {fileID: 21300000, guid: cdf6ac1c21efbdb49bb8f478795b1ca5, type: 3}
+  - {fileID: 21300000, guid: fc58fcf6b14b2794db4b2101f6a713bd, type: 3}
+  - {fileID: 21300000, guid: 27d1d2b511e38fb4faed3a6bcf025269, type: 3}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
