@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShowPlant : MonoBehaviour
 {
     private SpriteRenderer currentSprite;
     [SerializeField] private Plants plant;
+    private Harvesting harvest;
     private float timeRaw;
     public int time;
     private int stageGrowLimit;
@@ -20,9 +22,11 @@ public class ShowPlant : MonoBehaviour
         index++;
         yield return new WaitForSeconds(1f);
     }
+    private bool isPlantNotAssigned(Plants plant) => plant.IsUnityNull();
     void Start()
     {
         currentSprite = GetComponent<SpriteRenderer>();
+        harvest = GetComponent<Harvesting>();
         stageGrowLimit = plant.growTime / (plant.sprites.Length - 1);
         currentSprite.sprite = plant.sprites[0];
     }
@@ -38,14 +42,22 @@ public class ShowPlant : MonoBehaviour
             stageGrowLimit += stageGrowLimit;
         }
 
-        if (plant.dieTime == time)
+        if (!isPlantNotAssigned(plant))
         {
-            currentSprite.sprite = plant.sprites[plant.sprites.Length-1];
-        }
+            if (plant.dieTime == time)
+            {
+                currentSprite.sprite = plant.sprites[plant.sprites.Length - 1];
+            }
 
-        if (currentSprite.sprite==plant.sprites[plant.sprites.Length - 2])
+            if (currentSprite.sprite == plant.sprites[plant.sprites.Length - 2])
+            {
+                readyToHarvest = true;
+            }
+        }
+        
+        if (harvest.harvested == true)
         {
-            readyToHarvest = true;
+            plant = null;
         }
     }
 }

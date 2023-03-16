@@ -7,7 +7,7 @@ public class Harvesting : MonoBehaviour
 {
     private ShowPlant plantState;
     private SpriteRenderer currentSprite;
-
+    public bool harvested;
 
 
     private void Start()
@@ -21,6 +21,7 @@ public class Harvesting : MonoBehaviour
         {
             currentSprite.sprite = null;
             plantState.readyToHarvest = false;
+            harvested = true;
         }
     }
 }
