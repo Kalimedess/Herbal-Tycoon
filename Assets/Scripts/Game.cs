@@ -8,10 +8,11 @@ public class Game : MonoBehaviour
 {
     public int money = 10;
     //public TextMeshProUGUI UIText;
-    [SerializeField] public Money moneyscript;
+    private Money moneyscript;
 
     void Start()
     {
+        moneyscript = GetComponent<Money>();
         moneyscript.UpdateMoney(money); //tu wp³ywa na wyœwietlanie
 
         //UIText.text = money.ToString();
