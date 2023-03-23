@@ -11,7 +11,7 @@ public class Game : MonoBehaviour
     
     public int money = 10;
     //public TextMeshProUGUI UIText;
-    private Money moneyscript;
+    [SerializeField] public Money moneyscript;
 
     [Header("Shop")]
     [SerializeField] private Shop shop;
@@ -27,7 +27,6 @@ public class Game : MonoBehaviour
 
     void Start()
     {
-        moneyscript = GetComponent<Money>();
         moneyscript.UpdateMoney(money); //tu wp³ywa na wyœwietlanie
 
         shop.HideShop();
