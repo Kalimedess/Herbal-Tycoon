@@ -37,7 +37,7 @@ public class Game : MonoBehaviour
             shop.AddPlant(plant);
         }
 
-        OnPlantBought.addListener(BuyPlant);
+        OnPlantBought.AddListener(BuyPlant);
 
 
         //UIText.text = money.ToString();
@@ -52,12 +52,12 @@ public class Game : MonoBehaviour
         
     }
 
-    private int BuyPlant(int cena, int ilosc)
+    private void BuyPlant(int cena, int ilosc)
     {
         if (cena<=money)
         {
             money = money - cena;
-            return ilosc++;
+            ilosc++;
             moneyscript.UpdateMoney(money);
         }
     }
