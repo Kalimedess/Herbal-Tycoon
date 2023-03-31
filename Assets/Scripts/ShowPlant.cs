@@ -15,8 +15,8 @@ public class ShowPlant : MonoBehaviour
     public event EventHandler OnHarvestedRotten;
     [Header("Private Variables")]
     [SerializeField] private bool timerActive = true;
-    [SerializeField] private int stageGrowLimit=0;
-    [SerializeField] private int index = 0;
+    [SerializeField] private int stageGrowLimit = 0;
+    [SerializeField] private int index = 1;
     [SerializeField] private int temp;
     [SerializeField] private SpriteRenderer currentSprite;
     [SerializeField] private Plants plant;
@@ -69,19 +69,19 @@ public class ShowPlant : MonoBehaviour
             index = 0;
             stageGrowLimit = 0;
         }
-        if (stageGrowLimit == time)
-        {
-            StartCoroutine(waiter());
-            if (currentSprite.sprite != plant.sprites[plant.sprites.Length - 2])
-            {
-                stageGrowLimit += (int)Mathf.Ceil(plant.growTime / (plant.sprites.Length - 1f));
-            }
-        }
         if (!plant.IsUnityNull())
         {
             if (stageGrowLimit == 0)
             {
                 InitializeGrowing();
+            }
+            if (stageGrowLimit == time)
+            {
+                StartCoroutine(waiter());
+                if (currentSprite.sprite != plant.sprites[plant.sprites.Length - 2])
+                {
+                    stageGrowLimit += (int)Mathf.Ceil(plant.growTime / (plant.sprites.Length - 1f));
+                }
             }
             if (plant.dieTime == time)
             {
