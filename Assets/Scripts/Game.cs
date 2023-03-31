@@ -10,6 +10,7 @@ public class Game : MonoBehaviour
     public static UnityEvent<int, int> OnPlantBought = new UnityEvent<int, int>();
     
     public int money = 10;
+    //public TextMeshProUGUI UIText;
     [SerializeField] public Money moneyscript;
 
     [Header("Shop")]
@@ -26,31 +27,29 @@ public class Game : MonoBehaviour
 
     void Start()
     {
-        moneyscript.GetComponent<Money>(); 
         moneyscript.UpdateMoney(money); //tu wp³ywa na wyœwietlanie
-        
-        //shop.HideShop();
-        //OpenShopButton.onClick.AddListener(shop.ShowShop);
-        //CloseShopButton.onClick.AddListener(shop.HideShop);
-        //foreach (Plants plant in allplants)
-        //{
-        //    shop.AddPlant(plant);
-        //}
 
-        //OnPlantBought.addListener(BuyPlant);
+        shop.HideShop();
+        OpenShopButton.onClick.AddListener(shop.ShowShop);
+        CloseShopButton.onClick.AddListener(shop.HideShop);
+        foreach(Plants plant in allplants)
+        {
+            shop.AddPlant(plant);
+        }
+
+        OnPlantBought.AddListener(BuyPlant);
 
 
+        //UIText.text = money.ToString();
         //funkcja od schowania sklepu / magazynu przy starcie
         //funkcje od przyciskow otwierania i zamykania sklepu / magazynu
         //funkcja foreach od zaladowania obiektow i dodania do magazynu / sklepu
         //funkcja od aktywowania przyciskow w sklepie / magazynie
     }
 
-
-
     void Update()
     {
-        moneyscript.UpdateMoney(money);
+        
     }
 
     private void BuyPlant(int cena, int ilosc)
@@ -58,6 +57,7 @@ public class Game : MonoBehaviour
         if (cena<=money)
         {
             money = money - cena;
+            ilosc++;
             moneyscript.UpdateMoney(money);
         }
     }
