@@ -10,31 +10,20 @@ public class BuyingPots : MonoBehaviour
     private Game gameManager;
     public GameObject buyButton;
 
-    private bool isButtonNull(GameObject Button) => Button.IsUnityNull();
-    private bool isPotNull(GameObject pot) => pot.IsUnityNull();
     private void Start()
     {
-        this.enabled = false;
         gameManager = GetComponent<Game>();
+
     }
-    private void OnEnable()
+    public void BuyPot(int price)
     {
-        if (!isButtonNull(buyButton))
+        if (!buyButton.IsUnityNull() && !pot.IsUnityNull())
         {
-            if (!isPotNull(pot))
+            if (gameManager.money >= price)
             {
-                if (gameManager.money >= 500)
-                {
-                    Instantiate(pot, buyButton.transform);
-                    gameManager.money -= 500;
-                    gameManager.updateMoney();
-                    Destroy(buyButton);
-                }
-                else
-                {
-                    this.enabled = false;
-                    return;
-                }
+                Instantiate(pot, (Vector2)buyButton.transform.position + new Vector2(0, 0.7f), Quaternion.identity);
+                gameManager.money -= price;
+                Destroy(buyButton);
             }
         }
     }
