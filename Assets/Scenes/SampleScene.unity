@@ -874,7 +874,7 @@ MonoBehaviour:
   isRotten: 0
   timerActive: 1
   stageGrowLimit: 0
-  index: 1
+  index: 0
   temp: 0
   currentSprite: {fileID: 0}
   plant: {fileID: 11400000, guid: f4cdee87a9e3f694fb351f904b913521, type: 2}
