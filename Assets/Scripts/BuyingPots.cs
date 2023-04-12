@@ -21,7 +21,7 @@ public class BuyingPots : MonoBehaviour
         {
             if (gameManager.money >= price)
             {
-                Instantiate(pot, (Vector2)buyButton.transform.position + new Vector2(0, 0.7f), Quaternion.identity);
+                Instantiate(pot, (Vector2)buyButton.transform.position, Quaternion.identity);
                 gameManager.money -= price;
                 Destroy(buyButton);
             }

@@ -8,19 +8,18 @@ using UnityEngine.Playables;
 public class ShowPlant : MonoBehaviour
 {
     [Header("Public Variables")]
-    public int time;
+    public float time;
     public bool readyToHarvest = false;
     public bool isRotten = false;
     public event EventHandler OnHarvested;
     public event EventHandler OnHarvestedRotten;
     [Header("Private Variables")]
     [SerializeField] private bool timerActive = true;
-    [SerializeField] private int stageGrowLimit = 0;
+    [SerializeField] private float stageGrowLimit = 0;
     [SerializeField] private int index = 1;
     [SerializeField] private int temp;
     [SerializeField] private SpriteRenderer currentSprite;
     [SerializeField] private Plants plant;
-    [SerializeField] private float timeRaw;
     [SerializeField] private bool harvested;
 
 
@@ -28,7 +27,6 @@ public class ShowPlant : MonoBehaviour
     {
         currentSprite.sprite = plant.sprites[index];
         index++;
-        time += 1;
         yield return new WaitForSeconds(1f);
     }
     void Start()
@@ -39,7 +37,7 @@ public class ShowPlant : MonoBehaviour
     }
     private void InitializeGrowing()
     {
-        stageGrowLimit = (int)Mathf.Ceil(plant.growTime / (plant.sprites.Length - 1f));
+        stageGrowLimit = plant.growTime / (plant.sprites.Length - 2f);
         currentSprite.sprite = plant.sprites[0];
     }
     private void HarvestDelete(object sender, EventArgs e)
@@ -52,38 +50,35 @@ public class ShowPlant : MonoBehaviour
     }
     private void TimeReset()
     {
-        timeRaw = 0f;
-        time = 0;
+        time = 0f;
         timerActive = true;
     }
     void Update()
     {
         if (timerActive && !isRotten)
         {
-            timeRaw += Time.deltaTime;
-            time = (int)timeRaw;
+            time += Time.deltaTime;
         }
         if (plant.IsUnityNull())
         {
             TimeReset();
-            index = 0;
+            index = 1;
             stageGrowLimit = 0;
         }
-        if (!plant.IsUnityNull())
-        {
+        else { 
             if (stageGrowLimit == 0)
             {
                 InitializeGrowing();
             }
-            if (stageGrowLimit == time)
+            if (stageGrowLimit < time)
             {
                 StartCoroutine(waiter());
                 if (currentSprite.sprite != plant.sprites[plant.sprites.Length - 2])
                 {
-                    stageGrowLimit += (int)Mathf.Ceil(plant.growTime / (plant.sprites.Length - 1f));
+                    stageGrowLimit += plant.growTime / (plant.sprites.Length - 2f);
                 }
             }
-            if (plant.dieTime == time)
+            if (plant.dieTime < time)
             {
                 currentSprite.sprite = plant.sprites[plant.sprites.Length - 1];
                 isRotten = true;
