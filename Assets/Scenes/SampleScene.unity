@@ -373,6 +373,8 @@ GameObject:
   - component: {fileID: 135004317}
   - component: {fileID: 135004316}
   - component: {fileID: 135004315}
+  - component: {fileID: 135004319}
+  - component: {fileID: 135004318}
   m_Layer: 5
   m_Name: Watering Can
   m_TagString: Untagged
@@ -389,18 +391,18 @@ RectTransform:
   m_GameObject: {fileID: 135004313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5568, y: 1.5568, z: 1.5568}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 953241039}
   m_Father: {fileID: 49263691}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 913, y: -440}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 21, y: 20}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &135004315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +416,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 0}
+  initialPosition: {x: 0, y: 0}
   canvas: {fileID: 0}
+  image: {fileID: 0}
+  _boxCollider: {fileID: 0}
+  waterParticle: {fileID: 0}
+  wateringCanSprite: {fileID: 21300000, guid: d174e2e3f6ed8344c8a00e9c21391c8a, type: 3}
+  wateringCanActiveSprite: {fileID: 21300000, guid: e55f30c8eb935374493926d644fc042f, type: 3}
 --- !u!114 &135004316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3042b019b052942a1baf7aa49d7ca6bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d174e2e3f6ed8344c8a00e9c21391c8a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -453,6 +461,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135004313}
   m_CullTransparentMesh: 1
+--- !u!50 &135004318
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135004313}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &135004319
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135004313}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -66.94715, y: 4.440666}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 66.624466, y: 107.15738}
+  m_EdgeRadius: 0
 --- !u!1 &169265986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1438,7 +1493,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4482111306035201441, guid: 6a41a146e28136842b9fc162b3360382, type: 3}
       propertyPath: m_Name
-      value: Particle System
+      value: Water
       objectReference: {fileID: 0}
     - target: {fileID: 4482111306035201442, guid: 6a41a146e28136842b9fc162b3360382, type: 3}
       propertyPath: m_RootOrder
@@ -1458,11 +1513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4482111306035201442, guid: 6a41a146e28136842b9fc162b3360382, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65
+      value: -71.9
       objectReference: {fileID: 0}
     - target: {fileID: 4482111306035201442, guid: 6a41a146e28136842b9fc162b3360382, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 43.7
       objectReference: {fileID: 0}
     - target: {fileID: 4482111306035201442, guid: 6a41a146e28136842b9fc162b3360382, type: 3}
       propertyPath: m_LocalPosition.z

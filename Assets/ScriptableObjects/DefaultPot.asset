@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potSprite: {fileID: 21300000, guid: 7120447b55f7c1a4c8a5a777873f6848, type: 3}
   growthSpeedMultiplier: 1
-  wateredTime: 0
