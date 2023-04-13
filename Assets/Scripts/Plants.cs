@@ -12,5 +12,6 @@ public class Plants : ScriptableObject
     [SerializeField] public int seedquantity;
     [SerializeField] public int growTime;
     [SerializeField] public int dieTime;
+    [SerializeField] public int wateredTime;
     [SerializeField] public Sprite[] sprites;
 }

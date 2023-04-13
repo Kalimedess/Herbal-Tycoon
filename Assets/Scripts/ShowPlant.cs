@@ -101,4 +101,8 @@ public class ShowPlant : MonoBehaviour
             OnHarvestedRotten?.Invoke(this, EventArgs.Empty);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Wypierdalaj");
+    }
 }
