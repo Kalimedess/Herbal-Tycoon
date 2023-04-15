@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - plant: {fileID: 11400000, guid: f4cdee87a9e3f694fb351f904b913521, type: 2}
+  - waterWarning: {instanceID: 0}
+  - plant: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

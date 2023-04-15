@@ -18,7 +18,7 @@ MonoBehaviour:
   plantquantity: 0
   seedquantity: 0
   growTime: 10
-  dieTime: 15
+  dieTime: 30
   wateredTime: 5
   sprites:
   - {fileID: 21300000, guid: d977f0070d2131b4891427349c21df58, type: 3}

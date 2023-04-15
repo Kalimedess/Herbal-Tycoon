@@ -133,6 +133,7 @@ MonoBehaviour:
   index: 1
   temp: 0
   currentSprite: {fileID: 0}
+  dehydrationTime: 0
   plant: {fileID: 0}
   harvested: 0
 --- !u!50 &2752670145823540553
@@ -143,7 +144,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5075391755130874907}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
