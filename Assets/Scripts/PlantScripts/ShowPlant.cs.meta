@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: ea0f0e9fe8e9e664cb1b612bca64b08a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - waterWarning: {instanceID: 0}
+  - plant: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
