@@ -17,12 +17,11 @@ public class ShowPlant : MonoBehaviour
     [SerializeField] private bool timerActive = true;
     [SerializeField] private float stageGrowLimit = 0;
     private int index = 1;
-    private int temp;
     private SpriteRenderer currentSprite;
     [SerializeField] public float dehydrationTime;
     [SerializeField] private Plants plant;
-    private bool harvested;
     [SerializeField] public float dehydrationTimeWarningPercentage = 0.2f;
+    [SerializeField] private GameObject dehydrationWarning;
 
 
     IEnumerator waiter()
@@ -37,6 +36,7 @@ public class ShowPlant : MonoBehaviour
         OnHarvested += HarvestDelete;
         OnHarvestedRotten += HarvestDelete;
         _collider = GetComponent<BoxCollider2D>();
+        dehydrationWarning.SetActive(false);
     }
     private void InitializeGrowing()
     {
@@ -99,6 +99,14 @@ public class ShowPlant : MonoBehaviour
                 stageGrowLimit = plant.dieTime;
             }
 
+            if(dehydrationTime <= dehydrationTimeWarningPercentage*plant.wateredTime) {
+                dehydrationWarning.SetActive(true);
+            }
+            else if(dehydrationWarning.activeSelf==true)
+            {
+                dehydrationWarning.SetActive(false);
+            }
+
             if (dehydrationTime <= 0)
             {
                 readyToHarvest = true;
@@ -112,14 +120,19 @@ public class ShowPlant : MonoBehaviour
         if (readyToHarvest && !isRotten)
         {
             OnHarvested?.Invoke(this, EventArgs.Empty);
+            dehydrationWarning.SetActive(false);
         }
         if (readyToHarvest && isRotten)
         {
             OnHarvestedRotten?.Invoke(this, EventArgs.Empty);
+            dehydrationWarning.SetActive(false);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        dehydrationTime = plant.wateredTime;
+        if(!plant.IsUnityNull())
+            if (!isRotten)
+                dehydrationTime = plant.wateredTime;
+        
     }
 }

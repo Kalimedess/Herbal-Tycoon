@@ -6,24 +6,24 @@ using UnityEngine.UI;
 
 public class BuyingPots : MonoBehaviour
 {
-    public GameObject pot;
+    [SerializeField] private GameObject pot;
     private Game gameManager;
-    public GameObject buyButton;
+    [SerializeField] private GameObject[] buyButton;
 
     private void Start()
     {
         gameManager = GetComponent<Game>();
 
     }
-    public void BuyPot(int price)
+    public void BuyPot(uint price)
     {
         if (!buyButton.IsUnityNull() && !pot.IsUnityNull())
         {
             if (gameManager.money >= price)
             {
-                Instantiate(pot, (Vector2)buyButton.transform.position, Quaternion.identity);
+                Instantiate(pot, (Vector2)buyButton[0].transform.position, Quaternion.identity);
                 gameManager.money -= price;
-                Destroy(buyButton);
+                Destroy(buyButton[0]);
             }
         }
     }

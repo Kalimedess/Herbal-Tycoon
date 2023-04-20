@@ -8,7 +8,7 @@ public class Money : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI moneytext;
 
-    public void UpdateMoney(int amount)
+    public void UpdateMoney(uint amount)
     {
         moneytext.text = $"Kasa: {amount}";
     }
