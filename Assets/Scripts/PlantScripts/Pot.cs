@@ -6,5 +6,4 @@ using UnityEngine;
 public class Pot : ScriptableObject
 {
     [SerializeField] public Sprite potSprite;
-    [SerializeField] public float growthSpeedMultiplier;
 }

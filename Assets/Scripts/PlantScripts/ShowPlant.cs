@@ -22,6 +22,8 @@ public class ShowPlant : MonoBehaviour
     [SerializeField] private Plants plant;
     [SerializeField] public float dehydrationTimeWarningPercentage = 0.2f;
     [SerializeField] private GameObject dehydrationWarning;
+    [SerializeField] private float growTime;
+    [SerializeField] private PotControl pot;
 
 
     IEnumerator waiter()
@@ -32,6 +34,11 @@ public class ShowPlant : MonoBehaviour
     }
     void Start()
     {
+        pot = GetComponentInParent<PotControl>();
+        if(plant != null) 
+        {
+            growTime = plant.growTime * pot.growthSpeedMultiplier;
+        }
         currentSprite = GetComponent<SpriteRenderer>();
         OnHarvested += HarvestDelete;
         OnHarvestedRotten += HarvestDelete;
@@ -40,7 +47,9 @@ public class ShowPlant : MonoBehaviour
     }
     private void InitializeGrowing()
     {
-        stageGrowLimit = plant.growTime / (plant.sprites.Length - 2f);
+        pot = GetComponentInParent<PotControl>();
+        growTime = plant.growTime * pot.growthSpeedMultiplier;
+        stageGrowLimit = growTime / (plant.sprites.Length - 2f);
         currentSprite.sprite = plant.sprites[0];
         dehydrationTime = plant.wateredTime;
     }
@@ -83,7 +92,7 @@ public class ShowPlant : MonoBehaviour
                 StartCoroutine(waiter());
                 if (currentSprite.sprite != plant.sprites[plant.sprites.Length - 2])
                 {
-                    stageGrowLimit += plant.growTime / (plant.sprites.Length - 2f);
+                    stageGrowLimit += growTime / (plant.sprites.Length - 2f);
                 }
             }
 

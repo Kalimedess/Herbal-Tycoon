@@ -9,7 +9,7 @@ public class Game : MonoBehaviour
 {
     public static UnityEvent<int, int> OnPlantBought = new UnityEvent<int, int>();
     
-    public uint money = 10;
+    public int money = 10;
     //public TextMeshProUGUI UIText;
     [SerializeField] public Money moneyscript;
 
@@ -40,6 +40,6 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        moneyscript.UpdateMoney(money);       
+        moneyscript.UpdateMoney(money);
     }
 }

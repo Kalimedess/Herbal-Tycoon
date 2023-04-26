@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c72218de3870cb44a6ee79f68892112, type: 3}
-  m_Name: Inv_Lavenda
+  m_Script: {fileID: 11500000, guid: 38e66568f0cdc72489d6f635789c161d, type: 3}
+  m_Name: Basic Fertilizer
   m_EditorClassIdentifier: 
-  plantName: Lavenda
-  sellPrice: 700
-  buyPrice: 150
-  sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  description: This is Lavenda
-  index: 2
+  growthMultiplier: 0
+  fertilizerDuration: 0
