@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98aed015c37d9f948aeb01fc61b3f1d9, type: 3}
   m_Name: Lavenda
   m_EditorClassIdentifier: 
-  plantName: 
-  sellPrice: 500
-  buyPrice: 50
-  plantquantity: 1
-  seedquantity: 1
+  plantName: Lavenda
   growTime: 30
   dieTime: 60
   wateredTime: 15
@@ -26,3 +22,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 86676982233f40f4385ab2fbb2c8d518, type: 3}
   - {fileID: 21300000, guid: 67a14034639ede8419cc10316fcf8f94, type: 3}
   - {fileID: 21300000, guid: 94eb649270355ec479c92a4ed8198401, type: 3}
+  index: 2
+  buyPrice: 50
+  seedquantity: 1

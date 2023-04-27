@@ -17,12 +17,13 @@ public class ShowPlant : MonoBehaviour
     [SerializeField] private bool timerActive = true;
     [SerializeField] private float stageGrowLimit = 0;
     private int index = 1;
-    private int temp;
     private SpriteRenderer currentSprite;
     [SerializeField] public float dehydrationTime;
     [SerializeField] private Plants plant;
-    private bool harvested;
     [SerializeField] public float dehydrationTimeWarningPercentage = 0.2f;
+    [SerializeField] private GameObject dehydrationWarning;
+    [SerializeField] private float growTime;
+    [SerializeField] private PotControl pot;
 
 
     IEnumerator waiter()
@@ -33,14 +34,22 @@ public class ShowPlant : MonoBehaviour
     }
     void Start()
     {
+        pot = GetComponentInParent<PotControl>();
+        if(plant != null) 
+        {
+            growTime = plant.growTime * pot.growthSpeedMultiplier;
+        }
         currentSprite = GetComponent<SpriteRenderer>();
         OnHarvested += HarvestDelete;
         OnHarvestedRotten += HarvestDelete;
         _collider = GetComponent<BoxCollider2D>();
+        dehydrationWarning.SetActive(false);
     }
     private void InitializeGrowing()
     {
-        stageGrowLimit = plant.growTime / (plant.sprites.Length - 2f);
+        pot = GetComponentInParent<PotControl>();
+        growTime = plant.growTime * pot.growthSpeedMultiplier;
+        stageGrowLimit = growTime / (plant.sprites.Length - 2f);
         currentSprite.sprite = plant.sprites[0];
         dehydrationTime = plant.wateredTime;
     }
@@ -83,7 +92,7 @@ public class ShowPlant : MonoBehaviour
                 StartCoroutine(waiter());
                 if (currentSprite.sprite != plant.sprites[plant.sprites.Length - 2])
                 {
-                    stageGrowLimit += plant.growTime / (plant.sprites.Length - 2f);
+                    stageGrowLimit += growTime / (plant.sprites.Length - 2f);
                 }
             }
 
@@ -99,6 +108,14 @@ public class ShowPlant : MonoBehaviour
                 stageGrowLimit = plant.dieTime;
             }
 
+            if(dehydrationTime <= dehydrationTimeWarningPercentage*plant.wateredTime) {
+                dehydrationWarning.SetActive(true);
+            }
+            else if(dehydrationWarning.activeSelf==true)
+            {
+                dehydrationWarning.SetActive(false);
+            }
+
             if (dehydrationTime <= 0)
             {
                 readyToHarvest = true;
@@ -112,14 +129,19 @@ public class ShowPlant : MonoBehaviour
         if (readyToHarvest && !isRotten)
         {
             OnHarvested?.Invoke(this, EventArgs.Empty);
+            dehydrationWarning.SetActive(false);
         }
         if (readyToHarvest && isRotten)
         {
             OnHarvestedRotten?.Invoke(this, EventArgs.Empty);
+            dehydrationWarning.SetActive(false);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        dehydrationTime = plant.wateredTime;
+        if(!plant.IsUnityNull())
+            if (!isRotten)
+                dehydrationTime = plant.wateredTime;
+        
     }
 }

@@ -5,13 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Plant", menuName = "Plant")]
 public class Plants : ScriptableObject
 {
-    [SerializeField] public string plantName;
-    [SerializeField] public int sellPrice;
-    [SerializeField] public int buyPrice;
-    [SerializeField] public int plantquantity;
-    [SerializeField] public int seedquantity;
-    [SerializeField] public int growTime;
-    [SerializeField] public int dieTime;
-    [SerializeField] public int wateredTime;
-    [SerializeField] public Sprite[] sprites;
+    public string plantName;
+    public int growTime;
+    public int dieTime;
+    public int wateredTime;
+    public Sprite[] sprites;
+    public int index;
+
+    [Header("Inventory")]
+    public Sprite[] invSprites;
+
+    //legacy solutions
+    public int buyPrice;
+    public int seedquantity;
 }

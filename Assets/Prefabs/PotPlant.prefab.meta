@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/PotPlant.prefab.meta
 guid: 430ef8bd4eb6c3f4b8d9eaf03fdda558
+========
+guid: 47df3b874bc25674ea3b39de2dd7d9ef
+>>>>>>>> main:Assets/Prefabs/ISlot.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

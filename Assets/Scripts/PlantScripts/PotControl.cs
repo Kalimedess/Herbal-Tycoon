@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class PotControl : MonoBehaviour
 {
-    [SerializeField] private Pot pot;
+    [SerializeField] public Pot pot;
+    [SerializeField] private Fertilizer fertilizer;
     [SerializeField] private SpriteRenderer potImage;
+    private float time=0;
+    [SerializeField] public float growthSpeedMultiplier = 1f;
 
     void Start()
     {
@@ -14,9 +17,29 @@ public class PotControl : MonoBehaviour
         potImage.sprite = pot.potSprite;
     }
 
-    void updatePot()
+    void placeFertilizer()
     {
-        potImage.sprite = pot.potSprite;
+        growthSpeedMultiplier -= fertilizer.growthMultiplier/100;
     }
-
+    void deleteFertilizer()
+    {
+        fertilizer = null;
+        time = 0;
+        growthSpeedMultiplier = 1f;
+    }
+    private void Update()
+    {
+        time += Time.deltaTime;
+        if (!fertilizer.IsUnityNull())
+        {
+            if (growthSpeedMultiplier == 1f)
+            {
+                placeFertilizer();
+            }
+            if (time >= fertilizer.fertilizerDuration)
+            {
+                deleteFertilizer();
+            }
+        }
+    }
 }

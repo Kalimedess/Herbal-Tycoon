@@ -9,7 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71604f060be01f04d96739b31a246cce, type: 3}
-  m_Name: DefaultPot
+  m_Script: {fileID: 11500000, guid: 6c72218de3870cb44a6ee79f68892112, type: 3}
+  m_Name: Inv_Aloe
   m_EditorClassIdentifier: 
-  potSprite: {fileID: 21300000, guid: 7120447b55f7c1a4c8a5a777873f6848, type: 3}
+  plantName: Aloe
+  sellPrice: 200
+  buyPrice: 50
+  sprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  description: This is Aloe
+  index: 1
