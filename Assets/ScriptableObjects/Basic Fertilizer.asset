@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e66568f0cdc72489d6f635789c161d, type: 3}
   m_Name: Basic Fertilizer
   m_EditorClassIdentifier: 
-  growthMultiplier: 0
-  fertilizerDuration: 0
+  growthMultiplier: 50
+  fertilizerDuration: 30
