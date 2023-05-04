@@ -5,23 +5,23 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     Image Target;
     public Color32 BasicColor;
     public Color32 OnEnterColor;
-    
+
 
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Click");
     }
-    
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         Target.color = OnEnterColor;
     }
-    
+
     public void OnPointerExit(PointerEventData eventData)
     {
         Target.color = BasicColor;
@@ -33,3 +33,4 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
         Target.color = BasicColor;
     }
 }
+
