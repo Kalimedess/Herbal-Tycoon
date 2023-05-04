@@ -11,11 +11,4 @@ public class Plants : ScriptableObject
     public int wateredTime;
     public Sprite[] sprites;
     public int index;
-
-    [Header("Inventory")]
-    public Sprite[] invSprites;
-
-    //legacy solutions
-    public int buyPrice;
-    public int seedquantity;
 }

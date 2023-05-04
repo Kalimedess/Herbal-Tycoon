@@ -15,6 +15,7 @@ public class BuyingPots : MonoBehaviour
                 Instantiate(pot, (Vector2)buyButton.transform.position, Quaternion.identity);
                 gameManager.money -= price;
                 Destroy(buyButton);
+
             }
         }
     }
