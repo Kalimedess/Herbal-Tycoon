@@ -26,7 +26,7 @@ public class Watering : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        _transform.Rotate(0,0,69);
+        _transform.Rotate(0,0,45);
         _transform.anchoredPosition = initialPosition+new Vector2(80,200);
         waterParticle.Play();
     }
@@ -39,7 +39,7 @@ public class Watering : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        _transform.Rotate(0, 0, -69);
+        _transform.Rotate(0, 0, -45);
         waterParticle.Stop();
         _transform.anchoredPosition = initialPosition;
     }

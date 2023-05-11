@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Playables;
 
-public class ShowPlant : MonoBehaviour
+public class PlantManager : MonoBehaviour, IDropHandler
 {
     public event EventHandler OnHarvested;
     public event EventHandler OnHarvestedRotten;
@@ -142,6 +143,16 @@ public class ShowPlant : MonoBehaviour
         if(!plant.IsUnityNull())
             if (!isRotten)
                 dehydrationTime = plant.wateredTime;
-        
+    }
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (!plant.IsUnityNull())
+            return;
+        GameObject droppedObject = eventData.pointerDrag;
+        if (droppedObject.TryGetComponent<DragandDrop>(out var dragAndDrop))
+        {
+            plant = dragAndDrop.plant;
+            Destroy(droppedObject);
+        }
     }
 }

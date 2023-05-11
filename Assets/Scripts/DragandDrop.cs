@@ -8,6 +8,7 @@ public class DragandDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private RectTransform rectTransform;
     [SerializeField] private Canvas canvas;
     private CanvasGroup canvasGroup;
+    public Plants plant;
 
     private void Awake()
     {
