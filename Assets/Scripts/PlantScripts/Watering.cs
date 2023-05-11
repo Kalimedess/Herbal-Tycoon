@@ -12,8 +12,6 @@ public class Watering : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     [SerializeField] private Image image;
     [SerializeField] private BoxCollider2D _boxCollider;
     [SerializeField] private ParticleSystem waterParticle;
-    [SerializeField] private Sprite wateringCanSprite;
-    [SerializeField] private Sprite wateringCanActiveSprite;
     
 
     void Start()
@@ -22,14 +20,14 @@ public class Watering : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvas = GetComponentInParent<Canvas>();
         image = GetComponent<Image>();
         waterParticle = GetComponentInChildren<ParticleSystem>();
-        image.sprite = wateringCanSprite;
         waterParticle.Stop();
         initialPosition = _transform.anchoredPosition;
         _boxCollider = GetComponent<BoxCollider2D>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        image.sprite = wateringCanActiveSprite;
+        _transform.Rotate(0,0,69);
+        _transform.anchoredPosition = initialPosition+new Vector2(80,200);
         waterParticle.Play();
     }
 
@@ -41,7 +39,7 @@ public class Watering : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        image.sprite = wateringCanSprite;
+        _transform.Rotate(0, 0, -69);
         waterParticle.Stop();
         _transform.anchoredPosition = initialPosition;
     }
