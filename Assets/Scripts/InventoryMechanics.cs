@@ -38,24 +38,5 @@ public class InventoryMechanics : MonoBehaviour
     public void AddItemToInventory(int numberofitem)
     {
         ItemDB.Instance.PlayerItems.Add(ItemDB.Instance.Items[numberofitem]);
-        UpdateInventorySlots();
-    }
-
-    void UpdateInventorySlots()
-    {
-        for(int i = 0; i < Inventory.transform.childCount; i++)
-        {
-            if (i < ItemDB.Instance.PlayerItems.Count)
-            {
-                Inventory.transform.GetChild(i).Find("Icon").gameObject.SetActive(true);
-                Inventory.transform.GetChild(i).Find("Icon").GetComponent<Image>().sprite=ItemDB.Instance.PlayerItems[i].ItemIcon;
-            }
-            else
-            {
-                Inventory.transform.GetChild(i).Find("Icon").gameObject.SetActive(false);
-                Inventory.transform.GetChild(i).Find("Icon").GetComponent<Image>().sprite = null;
-
-            }
-        }
     }
 }

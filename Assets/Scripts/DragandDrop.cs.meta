@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/PlantScripts/Fertilizer.cs.meta
-guid: 55c3f32a528a94743972170ccbbdb57a
-========
-guid: 99e69b1ef707c2546a4e24102246fa0c
->>>>>>>> main:Assets/Scripts/InventorySlot.cs.meta
+guid: cccca63975a2fcf43902542dfd305276
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
