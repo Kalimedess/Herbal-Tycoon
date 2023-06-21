@@ -34,7 +34,6 @@ public class Watering : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public void OnDrag(PointerEventData eventData)
     {
         _transform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-
     }
 
     public void OnEndDrag(PointerEventData eventData)

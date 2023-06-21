@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b7c38c418dcd943bab447117888f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBuildIndexToChangeInto: 0
+  sceneBuildIndexToChangeInto: 1
   exit: 0
   loadingBar: {fileID: 1362125727}
   loadingBarContainer: {fileID: 580386756}
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b7c38c418dcd943bab447117888f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBuildIndexToChangeInto: 1
+  sceneBuildIndexToChangeInto: 0
   exit: 1
   loadingBar: {fileID: 1362125727}
   loadingBarContainer: {fileID: 580386756}

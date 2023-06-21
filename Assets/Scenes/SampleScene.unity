@@ -4907,8 +4907,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245666971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.18}
-  m_LocalScale: {x: 6.8336, y: 7.2607, z: 6.8336}
+  m_LocalPosition: {x: 0, y: 0.24, z: 0.18}
+  m_LocalScale: {x: 6.8336, y: 6.897665, z: 6.8336}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -6828,7 +6828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b7c38c418dcd943bab447117888f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneBuildIndexToChangeInto: 1
+  sceneBuildIndexToChangeInto: 0
   exit: 0
   loadingBar: {fileID: 109502230}
   loadingBarContainer: {fileID: 109502231}
