@@ -26,7 +26,7 @@ public class PlantManager : MonoBehaviour, IDropHandler
     [SerializeField] private float growTime;
     [SerializeField] private PotControl pot;
 
-
+    
     IEnumerator waiter()
     {
         currentSprite.sprite = plant.sprites[index];
@@ -67,6 +67,10 @@ public class PlantManager : MonoBehaviour, IDropHandler
         time = 0f;
         timerActive = true;
         
+    }
+    public float GetTime()
+    {
+        return time;
     }
     void Update()
     {
