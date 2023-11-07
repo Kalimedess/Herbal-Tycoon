@@ -6,9 +6,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveSystem
 {
-    public static SaveData(PlantManager plant)
+    /*public static SaveData(PlantManager plant)
     {
         BinaryFormatter bf= new BinaryFormatter();
         string path = Application.persistentDataPath + "/save.pes";
-    }
+    }*/
 }

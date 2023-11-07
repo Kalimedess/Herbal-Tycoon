@@ -8,10 +8,12 @@ public class InventoryMechanics : MonoBehaviour
     [SerializeField] RectTransform Inventory;
     [SerializeField] Button openInventory;
     [SerializeField] Button closeInventory;
+    public GameObject inventorySlotPrefab;
+    public List<RectTransform> inventoryPanel;
     bool ActiveInventory = false;
     void Start()
     {
-        Inventory.gameObject.SetActive(false);
+        //Inventory.gameObject.SetActive(false);
         openInventory.onClick.AddListener(OpenInventory);
         closeInventory.onClick.AddListener(CloseInventory);
         AddItemToInventory(2);
@@ -37,6 +39,15 @@ public class InventoryMechanics : MonoBehaviour
     }
     public void AddItemToInventory(int numberofitem)
     {
-        ItemDB.Instance.PlayerItems.Add(ItemDB.Instance.Items[numberofitem]);
+        for (int i = 0; i < inventoryPanel.Count; i++)
+        {
+
+            if (inventoryPanel[i].childCount <= 0)
+            {
+                GameObject newSlot = Instantiate(inventorySlotPrefab, inventoryPanel[i]);
+                RectTransform slotRectTransform = newSlot.GetComponent<RectTransform>();
+                newSlot.SetActive(true);
+            }
+        }
     }
 }
